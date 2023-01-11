@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d7334a149443239578f4ea5cd246a1, type: 3}
+  m_Name: PlaformsSettings
+  m_EditorClassIdentifier: 
+  <SpawnBounds>k__BackingField: {x: 5, y: 20}
+  <DestroyDistanceFromCenter>k__BackingField: 10
+  <StartPlatformPrefab>k__BackingField: {fileID: 86959303733791699, guid: 31094f7c714d7c94d86682fb258496da, type: 3}
+  <PlatformTypePrefabs>k__BackingField:
+  - {fileID: 816914979124960219, guid: dab04b66ea237a342bf77c5a04c53e63, type: 3}
+  <PlatformsSpeed>k__BackingField: 5
