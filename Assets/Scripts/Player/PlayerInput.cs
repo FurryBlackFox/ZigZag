@@ -8,12 +8,29 @@ namespace Player
         public event Action DirectionChanged;
         
         //public bool NeedToChangeDirection { get; set; }
+
+        private bool _inputEnabled = true;
+
+        private void Awake()
+        {
+            Input.simulateMouseWithTouches = true;
+        }
+
+        public void Enable()
+        {
+            _inputEnabled = true;
+        }
         
+        public void Stop()
+        {
+            _inputEnabled = false;
+        }
         
         public void UpdateTick()
         {
-            Input.simulateMouseWithTouches = true;
-
+            if (!_inputEnabled)
+                return;
+            
             if (!Input.GetMouseButtonDown(0))
                 return;
             

@@ -9,7 +9,7 @@ namespace Player
     {
         [SerializeField] private PlayerInput _playerInput;
         [SerializeField] private PlayerMovement _playerMovement;
-        [SerializeField] private PlayerCollision _playerCollision;
+        [SerializeField] private PlayerPhysicsInteractions _playerPhysicsInteractions;
 
         private void OnValidate()
         {
@@ -19,8 +19,8 @@ namespace Player
             if (_playerMovement == null)
                 _playerMovement = GetComponentInChildren<PlayerMovement>();
             
-            if (_playerCollision == null)
-                _playerCollision = GetComponentInChildren<PlayerCollision>();
+            if (_playerPhysicsInteractions == null)
+                _playerPhysicsInteractions = GetComponentInChildren<PlayerPhysicsInteractions>();
         }
 
         private void Start()
@@ -31,13 +31,13 @@ namespace Player
         private void OnEnable()
         {
             _playerInput.DirectionChanged += _playerMovement.ChangeDirection;
-            _playerCollision.OnDeathZoneTriggerEntered += OnDeathZoneEntered;
+            _playerPhysicsInteractions.OnDeathZoneTriggerEntered += OnDeathZoneEntered;
         }
 
         private void OnDisable()
         {
             _playerInput.DirectionChanged -= _playerMovement.ChangeDirection;
-            _playerCollision.OnDeathZoneTriggerEntered -= OnDeathZoneEntered;
+            _playerPhysicsInteractions.OnDeathZoneTriggerEntered -= OnDeathZoneEntered;
         }
 
         private void Update()
@@ -45,16 +45,22 @@ namespace Player
             _playerInput.UpdateTick();
         }
 
+        private void FixedUpdate()
+        {
+            _playerPhysicsInteractions.FixedTick();
+        }
+
         private void OnDeathZoneEntered()
         {
             Debug.LogError("DeathZone");
-            enabled = false;
+            _playerInput.Stop();
+
             Invoke(nameof(ReloadLevel), 2f);
         }
 
         private void ReloadLevel()
         {
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadScene(0);
         }
     }
 }

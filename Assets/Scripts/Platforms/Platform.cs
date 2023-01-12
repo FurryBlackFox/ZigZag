@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Settings;
 using UnityEngine;
 
 namespace Platforms
@@ -7,21 +8,42 @@ namespace Platforms
     {
         [SerializeField] private List<PlatformSpawnPoint> _platformSpawnPoints;
 
+        private PlatformsSettings _platformsSettings;
+
+        private bool _initialized = false;
+
+        private bool _isDespawnStarted = false;
+        
+        public void TryToInit(PlatformsSettings plaformsSettings)
+        {
+            if(_initialized)
+                return;
+
+            _platformsSettings = plaformsSettings;
+            
+            _initialized = true;
+        }
+        
         public void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
         {
+            _isDespawnStarted = false;
+            
             transform.parent = parent;
             transform.position = spawnPoint;
             transform.rotation = rotation;
         }
 
-        public void OnDespawn()
+        public void OnDespawnStarted()
         {
-            
+            _isDespawnStarted = true;
         }
 
-        public void Move(Vector3 delta)
+        public void Move(Vector3 moveVector, float deltaTime)
         {
-            transform.position += delta;
+            if (_isDespawnStarted)
+                moveVector.y -= _platformsSettings.PlatformsFallSpeed;
+            
+            transform.position += moveVector * deltaTime;
         }
         
         public PlatformSpawnPoint TryToGetValidSpawnPointAtBounds(Vector2 bounds)
@@ -41,9 +63,9 @@ namespace Platforms
             return validPlatformSpawnPoints[randomIndex];
         }
 
-        public bool IsInGameBounds(float maxDistanceFromCenter)
+        public bool CheckIsInGameBounds()
         {
-            return transform.position.z >= -maxDistanceFromCenter;
+            return transform.position.z >= -_platformsSettings.MaxPlatformDistanceFromCenterToDestroy;
         }
     }
 }

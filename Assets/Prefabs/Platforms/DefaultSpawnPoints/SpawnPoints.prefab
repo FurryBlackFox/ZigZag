@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9035562357898067157}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2486192736311797590}
   - component: {fileID: 2486192736311797589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2486192737578000480}
   - component: {fileID: 2486192737578000487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpawnPointForward
   m_TagString: Untagged
   m_Icon: {fileID: 0}

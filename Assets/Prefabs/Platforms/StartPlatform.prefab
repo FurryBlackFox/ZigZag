@@ -154,18 +154,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoints
       objectReference: {fileID: 0}
-    - target: {fileID: 1850229353727251888, guid: 114937f8b6bea9d4ab2bf01efa7abff6, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2486192736311797591, guid: 114937f8b6bea9d4ab2bf01efa7abff6, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2486192737578000481, guid: 114937f8b6bea9d4ab2bf01efa7abff6, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 9035562357898067157, guid: 114937f8b6bea9d4ab2bf01efa7abff6, type: 3}
       propertyPath: m_RootOrder
       value: 1
