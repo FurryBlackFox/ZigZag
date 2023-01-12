@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Settings;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Platforms
 {
@@ -13,24 +16,33 @@ namespace Platforms
         private bool _initialized = false;
 
         private bool _isDespawnStarted = false;
-        
-        public void TryToInit(PlatformsSettings plaformsSettings)
+
+        protected virtual void OnValidate()
+        {
+            if (_platformSpawnPoints == null || _platformSpawnPoints.Count == 0)
+                _platformSpawnPoints = GetComponentsInChildren<PlatformSpawnPoint>().ToList();
+        }
+
+        public virtual bool TryToInit(PlatformsSettings plaformsSettings)
         {
             if(_initialized)
-                return;
+                return false;
 
             _platformsSettings = plaformsSettings;
-            
+
             _initialized = true;
+
+            return true;
         }
         
-        public void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
+        public virtual void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
         {
             _isDespawnStarted = false;
             
             transform.parent = parent;
             transform.position = spawnPoint;
             transform.rotation = rotation;
+            
         }
 
         public void OnDespawnStarted()

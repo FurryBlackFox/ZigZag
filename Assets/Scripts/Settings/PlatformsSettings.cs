@@ -9,18 +9,31 @@ namespace Settings
     public class PlatformsSettings : ScriptableObject
     {
         [field: SerializeField] public Vector2 SpawnBounds { get; private set; } = new Vector2(10f, 20f);
-        [field: SerializeField] public float MaxPlatformDistanceFromCenterToDestroy { get; private set; } = 10f;
+        [field: SerializeField, Min(0f)] public float MaxPlatformDistanceFromCenterToDestroy { get; private set; } = 10f;
         [field: SerializeField] public Platform StartPlatformPrefab { get; private set; }
         [field: SerializeField] public List<Platform> PlatformTypePrefabs { get; private set; }
 
         [field: SerializeField] public float PlatformsSpeed { get; private set; } = 5f;
-        [field: SerializeField] public float PlatformsFallSpeed { get; private set; } = 5f;
-        [field: SerializeField] public float PlatformsDeleteDelay { get; private set; } = 5f;
+        [field: SerializeField, Min(0f)] public float PlatformsFallSpeed { get; private set; } = 5f;
+        [field: SerializeField, Min(0f)] public float PlatformsDespawnDelay { get; private set; } = 5f;
+
+        [field: SerializeField, Range(0f, 1f)] public float JewelSpawnProbablility { get; private set; } = 0.2f;
+        [field: SerializeField] public List<Jewel.Jewel> JewelPrefabs { get; private set; }
 
         public Platform GetRandomPlatformPrefab()
         {
-            var randomIndex = Random.Range(0, PlatformTypePrefabs.Count);
-            return PlatformTypePrefabs[randomIndex];
+            return GetRandomElementFromList(PlatformTypePrefabs);
+        }
+        
+        public Jewel.Jewel GetRandomJewelPrefab()
+        {
+            return GetRandomElementFromList(JewelPrefabs);
+        }
+
+        private T GetRandomElementFromList<T>(List<T> list)
+        {
+            var randomIndex = Random.Range(0, list.Count);
+            return list[randomIndex];
         }
     }
 }

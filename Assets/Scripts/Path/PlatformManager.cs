@@ -106,7 +106,7 @@ namespace Platforms
             _activePlatforms.Dequeue();
             platform.OnDespawnStarted();
 
-            yield return new WaitForSeconds(_platformsSettings.PlatformsDeleteDelay);
+            yield return new WaitForSeconds(_platformsSettings.PlatformsDespawnDelay);
             
             _spawnedPlatforms.Dequeue();
             LeanPool.Despawn(platform);

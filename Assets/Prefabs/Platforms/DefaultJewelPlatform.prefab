@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816914979124960218}
-  - component: {fileID: 816914979124960219}
+  - component: {fileID: 6663532191448297946}
+  - component: {fileID: 1797198399694730678}
   m_Layer: 7
-  m_Name: DefaultPlatform
+  m_Name: DefaultJewelPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,10 +31,11 @@ Transform:
   m_Children:
   - {fileID: 8336103447794964402}
   - {fileID: 6103007313208584880}
+  - {fileID: 3483946437670240614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
---- !u!114 &816914979124960219
+--- !u!114 &6663532191448297946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,12 +44,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 816914979124960222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8edadf66199d40428e576eca0a902570, type: 3}
+  m_Script: {fileID: 11500000, guid: 65434c29677849cb97785c7a3271e3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _platformSpawnPoints:
   - {fileID: 816914978269378050}
   - {fileID: 816914979252498736}
+  _platformJewelController: {fileID: 1797198399694730678}
+--- !u!114 &1797198399694730678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816914979124960222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d031e229654d0ba7aab6cf9d08b13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jewelSpawnPoint: {fileID: 9112287880551323169}
+--- !u!1 &1363997023859322566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3483946437670240614}
+  - component: {fileID: 9112287880551323169}
+  m_Layer: 7
+  m_Name: JewelSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3483946437670240614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363997023859322566}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 816914979124960218}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!114 &9112287880551323169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363997023859322566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d23947ddd44e8d815b1eb7e8165c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6815325676553811820
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 21b2f8da1abe591488e8628288ac5973, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

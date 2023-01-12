@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d7334a149443239578f4ea5cd246a1, type: 3}
   m_Name: PlaformsSettings
   m_EditorClassIdentifier: 
-  <SpawnBounds>k__BackingField: {x: 5, y: 20}
+  <SpawnBounds>k__BackingField: {x: 4, y: 20}
   <MaxPlatformDistanceFromCenterToDestroy>k__BackingField: 10
   <StartPlatformPrefab>k__BackingField: {fileID: 86959303733791699, guid: 31094f7c714d7c94d86682fb258496da, type: 3}
   <PlatformTypePrefabs>k__BackingField:
-  - {fileID: 816914979124960219, guid: dab04b66ea237a342bf77c5a04c53e63, type: 3}
+  - {fileID: 6663532191448297946, guid: dab04b66ea237a342bf77c5a04c53e63, type: 3}
   <PlatformsSpeed>k__BackingField: 5
   <PlatformsFallSpeed>k__BackingField: 5
-  <PlatformsDeleteDelay>k__BackingField: 5
+  <PlatformsDespawnDelay>k__BackingField: 5
+  <JewelSpawnProbablility>k__BackingField: 0.2
+  <JewelPrefabs>k__BackingField:
+  - {fileID: 2576326658637780976, guid: d1550f4710ff42d4290376ae4543cf66, type: 3}

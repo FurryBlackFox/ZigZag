@@ -12,11 +12,13 @@ namespace Player
         public bool IsOnGround { get; private set; }
         
         private PlayerSettings _playerSettings;
+        private SignalBus _signalBus;
         
         [Inject]
-        private void Init(PlayerSettings playerSettings)
+        private void Init(PlayerSettings playerSettings, SignalBus signalBus)
         {
             _playerSettings = playerSettings;
+            _signalBus = signalBus;
         }
         
         public void FixedTick()
@@ -30,8 +32,17 @@ namespace Player
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("DeathZone"))
+            if (other.TryGetComponent<DeathZone.DeathZone>(out _))
+            {
                 OnDeathZoneTriggerEntered?.Invoke();
+                return;
+            }
+
+            if (other.TryGetComponent<Jewel.Jewel>(out var jewel))
+            {
+                _signalBus.Fire<OnPlayerCollectedJewel>();
+                jewel.TryToDespawn();
+            }
         }
     }
 }

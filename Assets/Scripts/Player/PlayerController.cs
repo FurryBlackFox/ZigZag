@@ -11,6 +11,15 @@ namespace Player
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerPhysicsInteractions _playerPhysicsInteractions;
 
+
+        private SignalBus _signalBus;
+        
+        [Inject]
+        private void Init(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+        }
+        
         private void OnValidate()
         {
             if (_playerInput == null)
@@ -25,12 +34,14 @@ namespace Player
 
         private void Start()
         {
+            _playerInput.Enable();
             _playerMovement.StartMovement();
         }
 
         private void OnEnable()
         {
             _playerInput.DirectionChanged += _playerMovement.ChangeDirection;
+            
             _playerPhysicsInteractions.OnDeathZoneTriggerEntered += OnDeathZoneEntered;
         }
 
@@ -52,9 +63,10 @@ namespace Player
 
         private void OnDeathZoneEntered()
         {
-            Debug.LogError("DeathZone");
             _playerInput.Stop();
-
+            
+            _signalBus.Fire<OnPlayerDeath>();
+            
             Invoke(nameof(ReloadLevel), 2f);
         }
 
