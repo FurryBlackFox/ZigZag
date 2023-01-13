@@ -1,12 +1,22 @@
 ﻿using System;
 using Lean.Pool;
+using Signals;
+using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 namespace Jewel
 {
     public class Jewel : MonoBehaviour
     {
-        public event Action OnJewelDespawn; 
+        private OnJewelDespawned _onJewelDespawnedSignal;
+        private SignalBus _signalBus;
+
+        public void Init(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+            _onJewelDespawnedSignal = new OnJewelDespawned(this);
+        }
 
         public void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
         {
@@ -17,7 +27,7 @@ namespace Jewel
 
         public void TryToDespawn()
         {
-            OnJewelDespawn?.Invoke();
+            _signalBus.Fire(_onJewelDespawnedSignal);
             
             LeanPool.Despawn(gameObject);
         }

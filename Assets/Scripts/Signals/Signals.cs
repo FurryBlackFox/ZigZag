@@ -5,8 +5,8 @@ namespace Signals
 {
     public class OnGameStateChanged
     {
-        public GameStateType prevStateType;
-        public GameStateType currentStateType;
+        public readonly GameStateType prevStateType;
+        public readonly GameStateType currentStateType;
         
         public OnGameStateChanged(GameStateType prevStateType, GameStateType currentStateType)
         {
@@ -17,7 +17,7 @@ namespace Signals
     
     public class OnGameStateChangeButtonClick
     {
-        public GameStateType buttonTargetType;
+        public readonly GameStateType buttonTargetType;
 
         public OnGameStateChangeButtonClick(GameStateType buttonTargetType)
         {
@@ -30,4 +30,14 @@ namespace Signals
     public class OnPlayerDeath { }
     
     public class OnPlayerChangedMoveDirection { }
+
+    public class OnJewelDespawned
+    {
+        public readonly Jewel.Jewel jewel;
+
+        public OnJewelDespawned(Jewel.Jewel jewel)
+        {
+            this.jewel = jewel;
+        }
+    }
 }

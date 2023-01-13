@@ -27,6 +27,7 @@ namespace Player
         private bool _isAbleToMove = false;
         
         private Vector3 _initialPosition = Vector3.zero;
+        
         [Inject]
         private void Init(PlayerSettings playerSettings, SignalBus signalBus)
         {

@@ -15,6 +15,8 @@ namespace Installers
             Container.DeclareSignal<OnPlayerCollectedJewel>();
             Container.DeclareSignal<OnPlayerDeath>();
             Container.DeclareSignal<OnPlayerChangedMoveDirection>();
+            
+            Container.DeclareSignal<OnJewelDespawned>();
         }
     }
 }

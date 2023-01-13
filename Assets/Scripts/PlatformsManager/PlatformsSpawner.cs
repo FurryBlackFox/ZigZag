@@ -16,11 +16,13 @@ namespace PlatformsManager
         private Platform _firstPlatform;
 
         private PlatformsSettings _platformsSettings;
+        private SignalBus _signalBus;
 
         [Inject]
-        private void Init(PlatformsSettings platformsSettings)
+        private void Init(PlatformsSettings platformsSettings, SignalBus signalBus)
         {
             _platformsSettings = platformsSettings;
+            _signalBus = signalBus;
         }
         
         public void FixedTick()
@@ -73,7 +75,7 @@ namespace PlatformsManager
                 : _platformsSettings.StartPlatformPrefab;
             
             _firstPlatform = LeanPool.Spawn(targetPlatformPrefab);
-            _firstPlatform.TryToInit(_platformsSettings);
+            _firstPlatform.TryToInit(_platformsSettings, _signalBus);
             
             SpawnedPlatforms.Enqueue(_firstPlatform);
             ActivePlatforms.Enqueue(_firstPlatform);

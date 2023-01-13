@@ -1,6 +1,7 @@
 ﻿using Settings;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace Platforms
 {
@@ -16,13 +17,13 @@ namespace Platforms
                 _platformJewelController = GetComponentInChildren<PlatformJewelController>();
         }
 
-        public override bool TryToInit(PlatformsSettings plaformsSettings)
+        public override bool TryToInit(PlatformsSettings plaformsSettings, SignalBus signalBus)
         {
-            if(!base.TryToInit(plaformsSettings))
+            if(!base.TryToInit(plaformsSettings, signalBus))
                 return false;
             
             if(_platformJewelController)
-                _platformJewelController.Initialize(plaformsSettings);
+                _platformJewelController.Initialize(plaformsSettings, signalBus);
 
             return true;
         }

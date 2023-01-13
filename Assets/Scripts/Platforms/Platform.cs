@@ -4,6 +4,7 @@ using System.Linq;
 using Settings;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Platforms
@@ -12,11 +13,13 @@ namespace Platforms
     {
         [SerializeField, Required] private List<PlatformSpawnPoint> _platformSpawnPoints;
 
-        private PlatformsSettings _platformsSettings;
+        protected PlatformsSettings platformsSettings;
+        protected SignalBus signalBus;
 
-        private bool _initialized = false;
+        protected bool initialized = false;
+        protected bool isDespawnStarted = false;
 
-        private bool _isDespawnStarted = false;
+
 
         protected virtual void OnValidate()
         {
@@ -24,21 +27,22 @@ namespace Platforms
                 _platformSpawnPoints = GetComponentsInChildren<PlatformSpawnPoint>().ToList();
         }
 
-        public virtual bool TryToInit(PlatformsSettings plaformsSettings)
+        public virtual bool TryToInit(PlatformsSettings plaformsSettings, SignalBus signalBus)
         {
-            if(_initialized)
+            if(initialized)
                 return false;
 
-            _platformsSettings = plaformsSettings;
+            platformsSettings = plaformsSettings;
+            this.signalBus = signalBus;
 
-            _initialized = true;
+            initialized = true;
 
             return true;
         }
         
         public virtual void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
         {
-            _isDespawnStarted = false;
+            isDespawnStarted = false;
             
             transform.parent = parent;
             transform.position = spawnPoint;
@@ -48,7 +52,7 @@ namespace Platforms
 
         public virtual void OnDespawnStarted()
         {
-            _isDespawnStarted = true;
+            isDespawnStarted = true;
         }
 
         public virtual void OnDespawnFinished()
@@ -58,8 +62,8 @@ namespace Platforms
 
         public void Move(Vector3 moveVector, float deltaTime)
         {
-            if (_isDespawnStarted)
-                moveVector.y -= _platformsSettings.PlatformsFallSpeed;
+            if (isDespawnStarted)
+                moveVector.y -= platformsSettings.PlatformsFallSpeed;
             
             transform.position += moveVector * deltaTime;
         }
@@ -83,7 +87,7 @@ namespace Platforms
 
         public bool CheckIsInGameBounds()
         {
-            return transform.position.z >= -_platformsSettings.MaxPlatformDistanceFromCenterToDestroy;
+            return transform.position.z >= -platformsSettings.MaxPlatformDistanceFromCenterToDestroy;
         }
     }
 }

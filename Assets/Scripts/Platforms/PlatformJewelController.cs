@@ -16,15 +16,18 @@ namespace Platforms
         private Jewel.Jewel _activeJewel;
         private PlatformsSettings _platformsSettings;
 
+        private SignalBus _signalBus;
+
         private void OnValidate()
         {
             if (_jewelSpawnPoint == null)
                 _jewelSpawnPoint = GetComponentInChildren<PlatformJewelSpawnPoint>();
         }
 
-        public void Initialize(PlatformsSettings platformsSettings)
+        public void Initialize(PlatformsSettings platformsSettings, SignalBus signalBus)
         {
             _platformsSettings = platformsSettings;
+            _signalBus = signalBus;
         }
         
         public void TryToSpawnJewel()
@@ -36,13 +39,12 @@ namespace Platforms
                 return;
 
             _activeJewel = LeanPool.Spawn(_platformsSettings.GetRandomJewelPrefab());
+            _activeJewel.Init(_signalBus);
             
             var jewelSpawnPointTransform = _jewelSpawnPoint.transform;
-
+            
             _activeJewel.OnSpawn(jewelSpawnPointTransform,
                 jewelSpawnPointTransform.position, jewelSpawnPointTransform.rotation);
-
-            _activeJewel.OnJewelDespawn += OnJewelDespawn;
         }
 
         public void TryToDespawnJewel()
@@ -51,12 +53,6 @@ namespace Platforms
                 return;
             
             _activeJewel.TryToDespawn();
-        }
-        
-        private void OnJewelDespawn()
-        {
-            _activeJewel.OnJewelDespawn -= OnJewelDespawn;
-            _activeJewel = null;
         }
     }
 }
