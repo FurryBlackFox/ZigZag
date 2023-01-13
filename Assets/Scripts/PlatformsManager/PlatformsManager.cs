@@ -40,9 +40,10 @@ namespace PlatformsManager
         
         private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
         {
-            switch (stateChangedEvent.gameStateType)
+            var prevStateType = stateChangedEvent.prevStateType;
+            switch (stateChangedEvent.currentStateType)
             {
-                case GameStateType.MainMenu:
+                case GameStateType.MainMenu when prevStateType == GameStateType.None || prevStateType == GameStateType.Defeat:
                     _platformsSpawner.InitialSpawn();
                     _platformsMover.ChangeMovementAvailabilityState(false);
                     break;

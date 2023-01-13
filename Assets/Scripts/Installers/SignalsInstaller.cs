@@ -11,8 +11,6 @@ namespace Installers
             
             Container.DeclareSignal<OnGameStateChanged>();
             Container.DeclareSignal<OnGameStateChangeButtonClick>();
-            
-            Container.DeclareSignal<OnPlayStateStart>();
 
             Container.DeclareSignal<OnPlayerCollectedJewel>();
             Container.DeclareSignal<OnPlayerDeath>();

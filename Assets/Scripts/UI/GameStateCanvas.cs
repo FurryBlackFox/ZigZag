@@ -41,7 +41,7 @@ namespace UI
 
         private void OnGameStateChanged(OnGameStateChanged onGameStateChangedEvent)
         {
-            var currentGameStateType = onGameStateChangedEvent.gameStateType;
+            var currentGameStateType = onGameStateChangedEvent.currentStateType;
             
             if (_enabledOnGameStateTypesList.Contains(currentGameStateType))
             {

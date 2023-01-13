@@ -14,6 +14,7 @@ namespace GameStateMachine
         private SignalBus _signalBus;
         
         private AbstractGameState _currentState;
+        private GameStateType _currentStateType;
         
         [Inject]
         private void Init(SignalBus signalBus)
@@ -40,13 +41,15 @@ namespace GameStateMachine
 
         public async void ChangeState(GameStateType newStateType)
         {
+            var prevStateType = _currentStateType;
             if (_currentState != null)
                 await _currentState.Exit();
 
             _currentState = _gameStatesDictionary[newStateType];
+            _currentStateType = newStateType;
             await _currentState.Enter();
             
-            _signalBus.Fire(new OnGameStateChanged(_currentState, newStateType));
+            _signalBus.Fire(new OnGameStateChanged(prevStateType, newStateType));
         }
 
         private void Start()

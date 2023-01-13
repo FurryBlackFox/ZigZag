@@ -5,13 +5,13 @@ namespace Signals
 {
     public class OnGameStateChanged
     {
-        public AbstractGameState abstractGameState;
-        public GameStateType gameStateType;
+        public GameStateType prevStateType;
+        public GameStateType currentStateType;
         
-        public OnGameStateChanged(AbstractGameState abstractGameState, GameStateType gameStateType)
+        public OnGameStateChanged(GameStateType prevStateType, GameStateType currentStateType)
         {
-            this.abstractGameState = abstractGameState;
-            this.gameStateType = gameStateType;
+            this.prevStateType = prevStateType;
+            this.currentStateType = currentStateType;
         }
     }
     
@@ -24,9 +24,6 @@ namespace Signals
             this.buttonTargetType = buttonTargetType;
         }
     }
-    
-    
-    public class OnPlayStateStart { }
 
     public class OnPlayerCollectedJewel { }
 

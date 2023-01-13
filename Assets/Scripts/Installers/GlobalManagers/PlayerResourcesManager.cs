@@ -1,4 +1,5 @@
 using DefaultNamespace;
+using GameStateMachine.GameStates;
 using Signals;
 using UnityEngine;
 using Utils.SavableData;using Zenject;
@@ -24,14 +25,14 @@ public class PlayerResourcesManager
         
         LoadData();
         
-        _signalBus.Subscribe<OnPlayStateStart>(AppendPlayedGamesCount);
+        _signalBus.Subscribe<OnGameStateChanged>(OnGameStateChanged);
         _signalBus.Subscribe<OnPlayerCollectedJewel>(AppendJewel);
         _signalBus.Subscribe<OnPlayerChangedMoveDirection>(AppendScorePoint);
     }
 
     ~PlayerResourcesManager()
     {
-        _signalBus.Unsubscribe<OnPlayStateStart>(AppendPlayedGamesCount);
+        _signalBus.Unsubscribe<OnGameStateChanged>(OnGameStateChanged);
         _signalBus.Unsubscribe<OnPlayerCollectedJewel>(AppendJewel);
         _signalBus.Unsubscribe<OnPlayerChangedMoveDirection>(AppendScorePoint);
         
@@ -50,7 +51,19 @@ public class PlayerResourcesManager
         CurrentScore.SetValue(0);
     }
 
-
+    private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
+    {
+        var prevStateType = stateChangedEvent.prevStateType;
+        switch (stateChangedEvent.currentStateType)
+        {
+            case GameStateType.Play when prevStateType == GameStateType.MainMenu:
+                AppendPlayedGamesCount();
+                break;
+            case GameStateType.MainMenu:
+                ClearScore();
+                break;
+        }
+    }
 
     public void AppendJewels(int appendedValue)
     {

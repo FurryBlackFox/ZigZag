@@ -9,6 +9,7 @@ namespace GameStateMachine.GameStates
     //[Flags]
     public enum GameStateType
     {
+        None = 0,
         MainMenu = 1 << 0,
         Settings = 1 << 1,
         SkinShop = 1 << 2,

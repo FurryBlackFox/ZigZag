@@ -48,7 +48,7 @@ namespace Player
 
         private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
         {
-            switch (stateChangedEvent.gameStateType)
+            switch (stateChangedEvent.currentStateType)
             {
                 case GameStateType.MainMenu:
                     _playerInput.ChangeInputEnabledState(false);

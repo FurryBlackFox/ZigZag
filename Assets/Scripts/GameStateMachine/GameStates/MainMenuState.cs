@@ -15,8 +15,6 @@ namespace GameStateMachine.GameStates
 
         public async override UniTask Enter()
         {
-            Debug.LogError("enter");
-            
             signalBus.Subscribe<OnGameStateChangeButtonClick>(OnGameStateChangeButtonClick);
         }
 
@@ -27,9 +25,6 @@ namespace GameStateMachine.GameStates
 
         private void OnGameStateChangeButtonClick(OnGameStateChangeButtonClick buttonClickEvent)
         {
-            if(buttonClickEvent.buttonTargetType == GameStateType.Play)
-                signalBus.Fire<OnPlayStateStart>();
-            
             switch (buttonClickEvent.buttonTargetType)
             {
                 case GameStateType.Play:
