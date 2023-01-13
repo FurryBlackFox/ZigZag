@@ -1,11 +1,12 @@
 ﻿using Settings;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Platforms
 {
     public class PlatformWithJewel : Platform
     {
-        [SerializeField] private PlatformJewelController _platformJewelController;
+        [SerializeField, Required] private PlatformJewelController _platformJewelController;
         
         protected override void OnValidate()
         {
@@ -31,6 +32,13 @@ namespace Platforms
             base.OnSpawn(parent, spawnPoint, rotation);
             
             _platformJewelController.TryToSpawnJewel();
+        }
+
+        public override void OnDespawnFinished()
+        {
+            base.OnDespawnFinished();
+            
+            _platformJewelController.TryToDespawnJewel();
         }
     }
 }

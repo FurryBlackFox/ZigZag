@@ -88,6 +88,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0486140828026b24cb87bd8da8af105a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6806410650769778326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197438296246750208}
+  - component: {fileID: 6619642763455657013}
+  - component: {fileID: 5909072340849597646}
+  m_Layer: 0
+  m_Name: GlobalManagersInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197438296246750208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806410650769778326}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7128140531321152772}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6619642763455657013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806410650769778326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64725b8a3b86624b92f4c7787ea07bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5909072340849597646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6806410650769778326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c11acf671544a9b934e56e18573820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7968259280162660956
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +174,7 @@ Transform:
   m_Children:
   - {fileID: 3099976413132907325}
   - {fileID: 193274149584760248}
+  - {fileID: 1197438296246750208}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,6 +194,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 3060480463174073439}
   - {fileID: 1182486039706974921}
+  - {fileID: 6619642763455657013}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1
   _editorReflectionBakingCoverageMode: 0

@@ -1,5 +1,6 @@
 ﻿using System;
 using Settings;
+using Signals;
 using UnityEngine;
 using Zenject;
 
@@ -7,10 +8,6 @@ namespace Player
 {
     public class PlayerPhysicsInteractions : MonoBehaviour
     {
-        public event Action OnDeathZoneTriggerEntered;
-
-        public bool IsOnGround { get; private set; }
-        
         private PlayerSettings _playerSettings;
         private SignalBus _signalBus;
         
@@ -20,21 +17,12 @@ namespace Player
             _playerSettings = playerSettings;
             _signalBus = signalBus;
         }
-        
-        public void FixedTick()
-        {
-            // var currentIsOnGroundState = Physics.Raycast(transform.position, Vector3.down,
-            //     _playerSettings.GroundDetectionRange, _playerSettings.GroundDetectionLayers);
-            //
-            // if (!currentIsOnGroundState)
-            //     OnDeathZoneTriggerEntered?.Invoke();
-        }
-        
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<DeathZone.DeathZone>(out _))
             {
-                OnDeathZoneTriggerEntered?.Invoke();
+                _signalBus.Fire<OnPlayerDeath>();
                 return;
             }
 

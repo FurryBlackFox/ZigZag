@@ -1,15 +1,19 @@
 using Settings;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-public class SettingsInstaller : MonoInstaller
+namespace Installers
 {
-    [SerializeField] private PlayerSettings _playerSettings;
-    [SerializeField] private PlatformsSettings _platformsSettings;
-
-    public override void InstallBindings()
+    public class SettingsInstaller : MonoInstaller
     {
-        Container.Bind<PlayerSettings>().FromScriptableObject(_playerSettings).AsSingle();
-        Container.Bind<PlatformsSettings>().FromScriptableObject(_platformsSettings).AsSingle();
+        [SerializeField, Required] private PlayerSettings _playerSettings;
+        [SerializeField, Required] private PlatformsSettings _platformsSettings;
+
+        public override void InstallBindings()
+        {
+            Container.Bind<PlayerSettings>().FromScriptableObject(_playerSettings).AsSingle();
+            Container.Bind<PlatformsSettings>().FromScriptableObject(_platformsSettings).AsSingle();
+        }
     }
 }

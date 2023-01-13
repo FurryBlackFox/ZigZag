@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Platforms
@@ -6,8 +7,8 @@ namespace Platforms
     public class PlatformSpawnPoint : MonoBehaviour
     {
         [SerializeField] private bool _debug = true;
-        [SerializeField] private Color _debugColor = Color.green;
-        [SerializeField] private Vector3 _debugScale = Vector3.one;
+        [SerializeField, ShowIf(nameof(_debug))] private Color _debugColor = Color.green;
+        [SerializeField, ShowIf(nameof(_debug))] private Vector3 _debugScale = Vector3.one;
 
         private void OnDrawGizmos()
         {

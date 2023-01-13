@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Settings;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,7 +10,7 @@ namespace Platforms
 {
     public class Platform : MonoBehaviour
     {
-        [SerializeField] private List<PlatformSpawnPoint> _platformSpawnPoints;
+        [SerializeField, Required] private List<PlatformSpawnPoint> _platformSpawnPoints;
 
         private PlatformsSettings _platformsSettings;
 
@@ -45,9 +46,14 @@ namespace Platforms
             
         }
 
-        public void OnDespawnStarted()
+        public virtual void OnDespawnStarted()
         {
             _isDespawnStarted = true;
+        }
+
+        public virtual void OnDespawnFinished()
+        {
+            
         }
 
         public void Move(Vector3 moveVector, float deltaTime)

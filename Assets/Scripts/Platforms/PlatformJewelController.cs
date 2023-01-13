@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Lean.Pool;
 using Settings;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -10,7 +11,7 @@ namespace Platforms
 {
     public class PlatformJewelController : MonoBehaviour
     {
-        [SerializeField] private PlatformJewelSpawnPoint _jewelSpawnPoint;
+        [SerializeField, Required] private PlatformJewelSpawnPoint _jewelSpawnPoint;
         
         private Jewel.Jewel _activeJewel;
         private PlatformsSettings _platformsSettings;

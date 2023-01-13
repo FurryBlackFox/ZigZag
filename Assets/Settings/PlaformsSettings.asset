@@ -20,6 +20,6 @@ MonoBehaviour:
   <PlatformsSpeed>k__BackingField: 5
   <PlatformsFallSpeed>k__BackingField: 5
   <PlatformsDespawnDelay>k__BackingField: 5
-  <JewelSpawnProbablility>k__BackingField: 0.2
+  <JewelSpawnProbablility>k__BackingField: 0.15
   <JewelPrefabs>k__BackingField:
   - {fileID: 2576326658637780976, guid: d1550f4710ff42d4290376ae4543cf66, type: 3}

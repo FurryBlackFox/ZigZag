@@ -1,12 +1,14 @@
 using System;
 using Player;
+using Signals;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
 public class PlayerShadowController : MonoBehaviour
 {
-    [SerializeField] private PlayerController _playerController;
-    [SerializeField] private GameObject _shadowMeshGameObject;
+    [SerializeField, Required] private PlayerController _playerController;
+    [SerializeField, Required] private GameObject _shadowMeshGameObject;
 
     private SignalBus _signalBus;
 

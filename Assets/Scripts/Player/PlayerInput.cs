@@ -1,30 +1,35 @@
 ﻿using System;
+using Signals;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Zenject;
 
 namespace Player
 {
     public class PlayerInput : MonoBehaviour
     {
         public event Action DirectionChanged;
-        
-        //public bool NeedToChangeDirection { get; set; }
 
-        private bool _inputEnabled = true;
+        private bool _inputEnabled = false;
+        
+        private SignalBus _signalBus;
+        
+        [Inject]
+        private void Init(SignalBus signalBus)
+        {
+            _signalBus = signalBus;
+        }
 
         private void Awake()
         {
             Input.simulateMouseWithTouches = true;
         }
 
-        public void Enable()
+        public void ChangeInputEnabledState(bool state)
         {
-            _inputEnabled = true;
+            _inputEnabled = state;
         }
         
-        public void Stop()
-        {
-            _inputEnabled = false;
-        }
         
         public void UpdateTick()
         {
@@ -32,6 +37,9 @@ namespace Player
                 return;
             
             if (!Input.GetMouseButtonDown(0))
+                return;
+
+            if (EventSystem.current.IsPointerOverGameObject())
                 return;
             
             DirectionChanged?.Invoke();
