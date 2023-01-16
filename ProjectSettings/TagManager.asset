@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DeathZone
   - Jewel
+  - AINavigation
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Platform
   - DeathZone
   - Jewel
-  - 
-  - 
+  - AINavigation
+  - SafeZone
   - 
   - 
   - 

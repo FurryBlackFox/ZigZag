@@ -28,9 +28,9 @@ namespace Platforms
             return true;
         }
 
-        public override void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
+        public override void OnSpawn()
         {
-            base.OnSpawn(parent, spawnPoint, rotation);
+            base.OnSpawn();
             
             _platformJewelController.TryToSpawnJewel();
         }

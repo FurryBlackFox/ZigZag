@@ -22,9 +22,12 @@ namespace GameStateMachine.GameStates
 
         private void OnGameStateChangeButtonClick(OnGameStateChangeButtonClick buttonClickEvent)
         {
-            if (buttonClickEvent.buttonTargetType == GameStateType.Play)
+            switch (buttonClickEvent.buttonTargetType)
             {
-                gameStateMachine.ChangeState(buttonClickEvent.buttonTargetType);
+                case GameStateType.Play:
+                case GameStateType.MainMenu:
+                    gameStateMachine.ChangeState(buttonClickEvent.buttonTargetType);
+                    break;
             }
         }
     }

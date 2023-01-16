@@ -9,5 +9,8 @@
 
         public static string PlayerSkinSaveKey = "Player_skin_";
         public static string PlayerActiveSkinKey = "Player_active_skin_";
+        
+        public static string EnableMusicKey = "Enable_music";
+        public static string EnableAiInputKey = "Enable_AI_input";
     }
 }

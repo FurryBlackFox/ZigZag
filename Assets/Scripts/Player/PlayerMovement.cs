@@ -47,15 +47,20 @@ namespace Player
         {
             _rigidbody.MovePosition(_initialPosition);
             SetDirection(_playerSettings.InitialMoveDirection);
+            SetUseGravityState(false);
         }
 
         public void ChangeMoveAvailabilityState(bool newState)
         {
             _isAbleToMove = newState;
-            
-            if(_isAbleToMove)
+
+            if (_isAbleToMove)
+            {
+                SetDirection(_currentDirection);
                 return;
+            }
             
+            SetUseGravityState(true);
             _rigidbody.velocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
         }
 
@@ -63,19 +68,6 @@ namespace Player
         {
             _signalBus.Fire<OnPlayerChangedMoveDirection>();
             SetDirection(_currentDirection == Direction.Right ? Direction.Left : Direction.Right);
-        }
-        
-        private void FixedUpdate()
-        {
-            TryToMovePlayer();
-        }
-
-        private void TryToMovePlayer()
-        {
-            if(!_isAbleToMove)
-                return;
-            
-            _rigidbody.velocity = new Vector3(_currentVectorDirection.x, _rigidbody.velocity.y, _currentVectorDirection.z);
         }
 
         private void SetDirection(Direction direction)
@@ -89,6 +81,13 @@ namespace Player
                 _ => Vector3.zero
             };
             _currentVectorDirection *= _playerSettings.DefaultMovementSpeed;
+            
+            _rigidbody.velocity = new Vector3(_currentVectorDirection.x, _rigidbody.velocity.y, 0);
+        }
+
+        private void SetUseGravityState(bool state)
+        {
+            _rigidbody.useGravity = state;
         }
     }
 }

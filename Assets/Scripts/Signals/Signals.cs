@@ -1,4 +1,5 @@
 using GameStateMachine.GameStates;
+using PlatformsManager;
 using UI;
 using UnityEngine;
 
@@ -42,6 +43,15 @@ namespace Signals
     
     public class OnPlayerChangedMoveDirection { }
 
+    public class OnPlayerCollidedAiDirectionTrigger
+    {
+        public PlatformAiDirection aiDirection;
+        
+        public OnPlayerCollidedAiDirectionTrigger(PlatformAiDirection aiDirection)
+        {
+            this.aiDirection = aiDirection;
+        }
+    }
 
     public class OnPlayerSkinSelected
     {
@@ -61,6 +71,26 @@ namespace Signals
         public OnPlayerSkinPurchased(int skinId)
         {
             this.skinId = skinId;
+        }
+    }
+
+    public class OnPlayerAiInputEnabledStateChanged
+    {
+        public bool state;
+        
+        public OnPlayerAiInputEnabledStateChanged(bool state)
+        {
+            this.state = state;
+        }
+    }
+    
+    public class OnMusicEnabledStateChanged
+    {
+        public bool state;
+        
+        public OnMusicEnabledStateChanged(bool state)
+        {
+            this.state = state;
         }
     }
     

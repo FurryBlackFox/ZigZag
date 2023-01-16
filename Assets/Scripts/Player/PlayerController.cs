@@ -1,5 +1,6 @@
 using System;
 using GameStateMachine.GameStates;
+using Installers.GlobalManagers;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,30 +11,42 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField, Required] private AiInput _aiInput;
         [SerializeField, Required] private PlayerInput _playerInput;
         [SerializeField, Required] private PlayerMovement _playerMovement;
 
         private SignalBus _signalBus;
+        private SettingsManager _settingsManager;
+
+        private AbstractInput _activeInput;
         
         [Inject]
-        private void Init(SignalBus signalBus)
+        private void Init(SignalBus signalBus, SettingsManager settingsManager)
         {
             _signalBus = signalBus;
+            _settingsManager = settingsManager;
             
-            _signalBus.Subscribe<OnGameStateChanged>(OnGameStateChanged);
+            
+            ChangeAiInputEnabledState(_settingsManager.AiInputSavableData.Value);
 
-            _playerInput.DirectionChanged += _playerMovement.ChangeDirection;
+            _signalBus.Subscribe<OnGameStateChanged>(OnGameStateChanged);
+            _signalBus.Subscribe<OnPlayerAiInputEnabledStateChanged>(OnPlayerAiInputEnableStateChanged);
         }
 
         private void OnDestroy()
         {
             _signalBus.Unsubscribe<OnGameStateChanged>(OnGameStateChanged);
+            _signalBus.Unsubscribe<OnPlayerAiInputEnabledStateChanged>(OnPlayerAiInputEnableStateChanged);
             
-            _playerInput.DirectionChanged -= _playerMovement.ChangeDirection;
+            if(_activeInput)
+                _activeInput.DirectionChanged -= _playerMovement.ChangeDirection;
         }
 
         private void OnValidate()
         {
+            if (_aiInput == null)
+                _aiInput = GetComponentInChildren<AiInput>();
+            
             if (_playerInput == null)
                 _playerInput = GetComponentInChildren<PlayerInput>();
 
@@ -41,9 +54,21 @@ namespace Player
                 _playerMovement = GetComponentInChildren<PlayerMovement>();
         }
 
-        private void Update()
+        private void OnPlayerAiInputEnableStateChanged(OnPlayerAiInputEnabledStateChanged aiInputEnabledStateEvent)
         {
-            _playerInput.UpdateTick();
+            ChangeAiInputEnabledState(aiInputEnabledStateEvent.state);
+        }
+
+        private void ChangeAiInputEnabledState(bool state)
+        {
+            if(_activeInput)
+                _activeInput.DirectionChanged -= _playerMovement.ChangeDirection;
+
+            _activeInput = state
+                ? (AbstractInput)_aiInput
+                : (AbstractInput)_playerInput;
+            _activeInput.DirectionChanged += _playerMovement.ChangeDirection;
+
         }
 
         private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
@@ -51,22 +76,35 @@ namespace Player
             switch (stateChangedEvent.currentStateType)
             {
                 case GameStateType.MainMenu:
-                    _playerInput.ChangeInputEnabledState(false);
-                    _playerMovement.ChangeMoveAvailabilityState(false);
+                    ChangeInputEnabledStates(false);
                     _playerMovement.ResetValues();
+                    _playerMovement.ChangeMoveAvailabilityState(false);
+                    ResetInputValues();
                     break;
                 case GameStateType.Play:
-                    _playerInput.ChangeInputEnabledState(true);
+                    ChangeInputEnabledStates(true);
                     _playerMovement.ChangeMoveAvailabilityState(true);
                     break;
                 case GameStateType.Pause:
-                    _playerInput.ChangeInputEnabledState(false);
+                    ChangeInputEnabledStates(false);
                     _playerMovement.ChangeMoveAvailabilityState(false);
                     break;
                 case GameStateType.Defeat:
-                    _playerInput.ChangeInputEnabledState(false);
+                    ChangeInputEnabledStates(false);
                     break;
             }
+        }
+
+        private void ChangeInputEnabledStates(bool enabled)
+        {
+            _aiInput.ChangeInputEnabledState(enabled);
+            _playerInput.ChangeInputEnabledState(enabled);
+        }
+
+        private void ResetInputValues()
+        {
+            _aiInput.ResetValues();
+            _playerInput.ResetValues();
         }
     }
 }

@@ -11,9 +11,10 @@ namespace Utils.SavableData
         {
         }
 
-        private static bool LoadBoolean(string key)
+        private static bool LoadBoolean(string key, bool defaultValue = false)
         {
-            var savedIntValue = PlayerPrefs.GetInt(key);
+            var defaultInt = defaultValue ? 1 : 0;
+            var savedIntValue = PlayerPrefs.GetInt(key, defaultInt);
             return savedIntValue == 1;
         }
         

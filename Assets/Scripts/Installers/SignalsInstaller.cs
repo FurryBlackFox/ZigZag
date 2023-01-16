@@ -15,9 +15,14 @@ namespace Installers
             Container.DeclareSignal<OnPlayerCollectedJewel>();
             Container.DeclareSignal<OnPlayerDeath>();
             Container.DeclareSignal<OnPlayerChangedMoveDirection>();
+            Container.DeclareSignal<OnPlayerCollidedAiDirectionTrigger>();
+
             
             Container.DeclareSignal<OnPlayerSkinPurchased>();
             Container.DeclareSignal<OnPlayerSkinSelected>();
+            
+            Container.DeclareSignal<OnMusicEnabledStateChanged>();
+            Container.DeclareSignal<OnPlayerAiInputEnabledStateChanged>();
         }
     }
 }

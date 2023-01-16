@@ -56,7 +56,7 @@ namespace PlatformsManager
         {
             if (_firstPlatform == null)
             {
-                SpawnPlatform(Vector3.zero, transform.rotation, _platformsSettings.StartPlatformPrefab);
+                SpawnPlatform(null, _platformsSettings.StartPlatformPrefab);
                 return true;
             }
 
@@ -64,22 +64,34 @@ namespace PlatformsManager
             if (spawnPoint == null)
                 return false;
             
-            SpawnPlatform(spawnPoint.transform.position, spawnPoint.transform.rotation);
+            SpawnPlatform(spawnPoint);
             return true;
         }
 
-        private void SpawnPlatform(Vector3 spawnPoint, Quaternion rotation, Platform platform = null)
+        private void SpawnPlatform(PlatformSpawnPoint platformSpawnPoint, Platform concretePlatform = null)
         {
-            var targetPlatformPrefab = platform == null
+            var targetPlatformPrefab = concretePlatform == null
                 ? _platformsSettings.GetRandomPlatformPrefab()
                 : _platformsSettings.StartPlatformPrefab;
+
+            var spawnPosition = platformSpawnPoint ? platformSpawnPoint.transform.position : Vector3.zero;
+            var spawnRotation = platformSpawnPoint ? platformSpawnPoint.transform.rotation : transform.rotation;
             
-            _firstPlatform = LeanPool.Spawn(targetPlatformPrefab);
-            _firstPlatform.TryToInit(_platformsSettings, _signalBus);
+            var newPlatform = LeanPool.Spawn(targetPlatformPrefab, spawnPosition, spawnRotation, transform);
+            newPlatform.TryToInit(_platformsSettings, _signalBus);
+            
+
+            newPlatform.OnSpawn();
+            
+            if(_firstPlatform)
+                _firstPlatform.RegisterNextPlatformAtPoint(newPlatform);
+            
+            _firstPlatform = newPlatform;
             
             SpawnedPlatforms.Enqueue(_firstPlatform);
             ActivePlatforms.Enqueue(_firstPlatform);
-            _firstPlatform.OnSpawn(transform, spawnPoint, rotation);
+
+
         }
         
         private void ForceDespawnLastPlatform()

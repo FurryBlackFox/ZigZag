@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PlatformsManager;
 using Settings;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,6 +12,10 @@ namespace Platforms
 {
     public class Platform : MonoBehaviour
     {
+        public event Action<Platform> OnNextPlatformSpawned;
+        public event Action OnSpawnEvent; 
+        public event Action OnDespawnStartedEvent; 
+
         [SerializeField, Required] private List<PlatformSpawnPoint> _platformSpawnPoints;
 
         protected PlatformsSettings platformsSettings;
@@ -18,8 +23,6 @@ namespace Platforms
 
         protected bool initialized = false;
         protected bool isDespawnStarted = false;
-
-
 
         protected virtual void OnValidate()
         {
@@ -40,19 +43,17 @@ namespace Platforms
             return true;
         }
         
-        public virtual void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
+        public virtual void OnSpawn()
         {
             isDespawnStarted = false;
-            
-            transform.parent = parent;
-            transform.position = spawnPoint;
-            transform.rotation = rotation;
-            
+            OnSpawnEvent?.Invoke();
+
         }
 
         public virtual void OnDespawnStarted()
         {
             isDespawnStarted = true;
+            OnDespawnStartedEvent?.Invoke();
         }
 
         public virtual void OnDespawnFinished()
@@ -88,6 +89,11 @@ namespace Platforms
         public bool CheckIsInGameBounds()
         {
             return transform.position.z >= -platformsSettings.MaxPlatformDistanceFromCenterToDestroy;
+        }
+
+        public void RegisterNextPlatformAtPoint(Platform platform)
+        {
+            OnNextPlatformSpawned?.Invoke(platform);
         }
     }
 }

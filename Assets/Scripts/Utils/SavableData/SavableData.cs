@@ -7,7 +7,7 @@ namespace Utils.SavableData
     {
         public event Action OnValueChanged;
         
-        protected delegate T LoadDelegate(string key);
+        protected delegate T LoadDelegate(string key, T defaultValue = default);
         protected delegate void SaveDelegate(string key, T value);
 
         protected abstract LoadDelegate LoadMethodDelegate { get;}
@@ -24,9 +24,9 @@ namespace Utils.SavableData
             this.autoSave = autoSave;
         }
 
-        public void Load()
+        public void Load(T defaultValue = default)
         {
-            Value = LoadMethodDelegate(saveKey);
+            Value = LoadMethodDelegate(saveKey, defaultValue);
         }
 
         public void Save()

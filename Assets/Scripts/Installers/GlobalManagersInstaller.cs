@@ -14,7 +14,8 @@ namespace Installers
             Container.Bind<PlayerResourcesManager>().FromNew().AsSingle().NonLazy();
             Container.Bind<PlayerSkinsManager>().FromNew().AsSingle().NonLazy();
             Container.Bind<VfxManager>().FromNew().AsSingle().NonLazy();
-            
+            Container.Bind<SettingsManager>().FromNew().AsSingle().NonLazy();
+
             
             Container.Bind<GameStateMachine.GameStateMachine>().FromInstance(_gameStateMachine).AsSingle().NonLazy();
         }

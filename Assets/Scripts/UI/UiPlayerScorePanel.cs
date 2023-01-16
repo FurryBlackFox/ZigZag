@@ -62,18 +62,13 @@ public class UiPlayerScorePanel : MonoBehaviour
 
     private IntegerSavableData GetTargetIntSavableData()
     {
-        switch (_targetScoreType)
+        return _targetScoreType switch
         {
-            case TargetScoreType.CurrentScore:
-                return _playerResourcesManager.CurrentScore;
-            case TargetScoreType.HighScore:
-                return _playerResourcesManager.HighScoreData;
-            case TargetScoreType.Jewels:
-                return _playerResourcesManager.CollectedJewelsCount;
-            case TargetScoreType.GamesPlayed:
-                return _playerResourcesManager.PlayedGamesCount;
-            default:
-                return null;
-        }
+            TargetScoreType.CurrentScore => _playerResourcesManager.CurrentScore,
+            TargetScoreType.HighScore => _playerResourcesManager.HighScoreData,
+            TargetScoreType.Jewels => _playerResourcesManager.CollectedJewelsCount,
+            TargetScoreType.GamesPlayed => _playerResourcesManager.PlayedGamesCount,
+            _ => null
+        };
     }
 }
