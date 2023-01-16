@@ -28,7 +28,7 @@ namespace Player
 
             if (other.TryGetComponent<Jewel.Jewel>(out var jewel))
             {
-                _signalBus.Fire<OnPlayerCollectedJewel>();
+                _signalBus.Fire(new OnPlayerCollectedJewel(transform.position, jewel));
                 jewel.TryToDespawn();
             }
         }

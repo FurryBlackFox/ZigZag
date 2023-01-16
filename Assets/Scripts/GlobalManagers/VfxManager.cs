@@ -17,17 +17,17 @@ namespace Installers.GlobalManagers
             _signalBus = signalBus;
             _vfxSettings = vfxSettings;
             
-            _signalBus.Subscribe<OnJewelDespawned>(OnJewelDespawned);
+            _signalBus.Subscribe<OnPlayerCollectedJewel>(OnPlayerCollectedJewel);
         }
 
         ~VfxManager()
         {
-            _signalBus.Unsubscribe<OnJewelDespawned>(OnJewelDespawned);
+            _signalBus.Unsubscribe<OnPlayerCollectedJewel>(OnPlayerCollectedJewel);
         }
 
-        private void OnJewelDespawned(OnJewelDespawned onJewelDespawned)
+        private void OnPlayerCollectedJewel(OnPlayerCollectedJewel onPlayerCollectedJewel)
         {
-            var jewelPosition = onJewelDespawned.jewel.transform.position;
+            var jewelPosition = onPlayerCollectedJewel.jewel.transform.position;
             if(_vfxSettings.EnableOnJewelCollectedAnnouncers)
                 SpawnOnJewelCollectedAnnouncer(jewelPosition);
         }

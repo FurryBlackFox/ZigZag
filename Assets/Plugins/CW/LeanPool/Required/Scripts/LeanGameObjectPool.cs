@@ -47,7 +47,7 @@ namespace Lean.Pool
 		/// <tip>IPoolable</tip>The prefab clone's components implementing IPoolable are called.
 		/// <tip>Broadcast IPoolable</tip>The prefab clone and all its child components implementing IPoolable are called.</summary>
 		public NotificationType Notification { set { notification = value; } get { return notification; } } [SerializeField] private NotificationType notification = NotificationType.IPoolable;
-
+	
 		/// <summary>This allows you to control how spawned/despawned GameObjects will be handled. The <b>DeactivateViaHierarchy</b> mode should be used if you need to maintain your prefab's de/activation state.
 		/// ActivateAndDeactivate = Despawned clones will be deactivated and placed under this GameObject.
 		/// DeactivateViaHierarchy = Despawned clones will be placed under a deactivated GameObject and left alone.</summary>

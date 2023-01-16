@@ -7,8 +7,8 @@ namespace Utils.SavableData
     {
         public event Action OnValueChanged;
         
-        protected delegate T LoadDelegate(string loadString);
-        protected delegate void SaveDelegate(string loadString, T value);
+        protected delegate T LoadDelegate(string key);
+        protected delegate void SaveDelegate(string key, T value);
 
         protected abstract LoadDelegate LoadMethodDelegate { get;}
         protected abstract SaveDelegate SaveMethodDelegate { get;}

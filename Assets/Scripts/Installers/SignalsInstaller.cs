@@ -16,7 +16,8 @@ namespace Installers
             Container.DeclareSignal<OnPlayerDeath>();
             Container.DeclareSignal<OnPlayerChangedMoveDirection>();
             
-            Container.DeclareSignal<OnJewelDespawned>();
+            Container.DeclareSignal<OnPlayerSkinPurchased>();
+            Container.DeclareSignal<OnPlayerSkinSelected>();
         }
     }
 }

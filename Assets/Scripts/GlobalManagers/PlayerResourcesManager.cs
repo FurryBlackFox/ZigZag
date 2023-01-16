@@ -56,7 +56,7 @@ public class PlayerResourcesManager
         var prevStateType = stateChangedEvent.prevStateType;
         switch (stateChangedEvent.currentStateType)
         {
-            case GameStateType.Play when prevStateType == GameStateType.MainMenu:
+            case GameStateType.Defeat:
                 AppendPlayedGamesCount();
                 break;
             case GameStateType.MainMenu:
@@ -65,8 +65,19 @@ public class PlayerResourcesManager
         }
     }
 
-    public void AppendJewels(int appendedValue)
+    public bool TryToWriteOffJewels(int value)
     {
+        if (CollectedJewelsCount.Value < value)
+            return false;
+
+        CollectedJewelsCount.SetValue(CollectedJewelsCount.Value - value);
+        
+        return true;
+    }
+
+    public void DebugAddJewels(int value)
+    {
+        CollectedJewelsCount.SetValue(CollectedJewelsCount.Value + value);
     }
     
     public void AppendScorePoint()
@@ -79,12 +90,10 @@ public class PlayerResourcesManager
     private void AppendJewel()
     {
         CollectedJewelsCount.SetValue(CollectedJewelsCount.Value + 1);
-        Debug.LogError($"Jewels: {CollectedJewelsCount.Value}");
     }
 
     private void AppendPlayedGamesCount()
     {
         PlayedGamesCount.SetValue(PlayedGamesCount.Value + 1);
-        Debug.LogError($"Played Games: {PlayedGamesCount.Value}");
     }
 }

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6404049835594b43ab9bc393467fe322, type: 3}
+  m_Name: PlayerSkinsContainer
+  m_EditorClassIdentifier: 
+  <SkinData>k__BackingField:
+  - <SkinId>k__BackingField: 0
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 7819100392cec5e47b67a0a97feb65d9, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: e74444b58f137954c8859ce2670cb867, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 1
+    <IsDefaultSkin>k__BackingField: 1
+    <PurchasePrice>k__BackingField: 0
+  - <SkinId>k__BackingField: 1
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 645f99b4b522c6248a3453f910419cca, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: f4aec35ddb2beaf4782297584b9efdba, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 1
+    <IsDefaultSkin>k__BackingField: 0
+    <PurchasePrice>k__BackingField: 100
+  - <SkinId>k__BackingField: 2
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 5183159b001c0e04eba252af40656785, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: cc039c40649628d40a28638040f7f380, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 0
+    <IsDefaultSkin>k__BackingField: 0
+    <PurchasePrice>k__BackingField: 100
+  - <SkinId>k__BackingField: 3
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 5543c7985774fc24394eac75d466b55c, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: a39228802edd939458878e71c74a982e, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 0
+    <IsDefaultSkin>k__BackingField: 0
+    <PurchasePrice>k__BackingField: 200
+  - <SkinId>k__BackingField: 4
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 65dd70b6261242541852a4fee45eecfa, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: cc86c637bfbb3224387ca4031fa00e54, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 0
+    <IsDefaultSkin>k__BackingField: 0
+    <PurchasePrice>k__BackingField: 300
+  - <SkinId>k__BackingField: 5
+    <PlayerSkinPrefab>k__BackingField: {fileID: 3520744266629778071, guid: 6698b088ddaab3b40b4649dfd38f1658, type: 3}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 14758be242c7514489f48a1d754f0474, type: 3}
+    <IsPurchasedByDefault>k__BackingField: 0
+    <IsDefaultSkin>k__BackingField: 0
+    <PurchasePrice>k__BackingField: 400

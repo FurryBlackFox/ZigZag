@@ -9,13 +9,12 @@ namespace Jewel
 {
     public class Jewel : MonoBehaviour
     {
-        private OnJewelDespawned _onJewelDespawnedSignal;
+        public Action OnJewelDespawned;
         private SignalBus _signalBus;
 
         public void Init(SignalBus signalBus)
         {
             _signalBus = signalBus;
-            _onJewelDespawnedSignal = new OnJewelDespawned(this);
         }
 
         public void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
@@ -27,8 +26,7 @@ namespace Jewel
 
         public void TryToDespawn()
         {
-            _signalBus.Fire(_onJewelDespawnedSignal);
-            
+            OnJewelDespawned?.Invoke();
             LeanPool.Despawn(gameObject);
         }
     }

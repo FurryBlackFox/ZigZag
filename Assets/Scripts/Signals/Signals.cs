@@ -1,5 +1,6 @@
 using GameStateMachine.GameStates;
 using UI;
+using UnityEngine;
 
 namespace Signals
 {
@@ -25,19 +26,42 @@ namespace Signals
         }
     }
 
-    public class OnPlayerCollectedJewel { }
+    public class OnPlayerCollectedJewel
+    {
+        public Vector3 playerPosition;
+        public Jewel.Jewel jewel;
+        
+        public OnPlayerCollectedJewel(Vector3 playerPosition, Jewel.Jewel jewel)
+        {
+            this.playerPosition = playerPosition;
+            this.jewel = jewel;
+        }
+    }
 
     public class OnPlayerDeath { }
     
     public class OnPlayerChangedMoveDirection { }
 
-    public class OnJewelDespawned
-    {
-        public readonly Jewel.Jewel jewel;
 
-        public OnJewelDespawned(Jewel.Jewel jewel)
+    public class OnPlayerSkinSelected
+    {
+        public int skinId;
+
+        public OnPlayerSkinSelected(int skinId)
         {
-            this.jewel = jewel;
+            this.skinId = skinId;
         }
     }
+    
+    
+    public class OnPlayerSkinPurchased
+    {
+        public int skinId;
+
+        public OnPlayerSkinPurchased(int skinId)
+        {
+            this.skinId = skinId;
+        }
+    }
+    
 }

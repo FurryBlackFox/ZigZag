@@ -40,6 +40,7 @@ namespace Platforms
 
             _activeJewel = LeanPool.Spawn(_platformsSettings.GetRandomJewelPrefab());
             _activeJewel.Init(_signalBus);
+            _activeJewel.OnJewelDespawned += OnActiveJewelDespawned;
             
             var jewelSpawnPointTransform = _jewelSpawnPoint.transform;
             
@@ -53,6 +54,13 @@ namespace Platforms
                 return;
             
             _activeJewel.TryToDespawn();
+        }
+
+        private void OnActiveJewelDespawned()
+        {
+            _activeJewel.OnJewelDespawned -= OnActiveJewelDespawned;
+
+            _activeJewel = null;
         }
     }
 }
