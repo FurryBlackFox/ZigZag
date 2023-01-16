@@ -1,4 +1,5 @@
 using System;
+using GameStateMachine.GameStates;
 using Player;
 using Signals;
 using Sirenix.OdinInspector;
@@ -26,16 +27,16 @@ public class PlayerShadowController : MonoBehaviour
 
     private void Awake()
     {
-        _signalBus.Subscribe<OnPlayerDeath>(OnPlayerDeath);
+        _signalBus.Subscribe<OnGameStateChanged>(OnGameStateChanged);
     }
 
     private void OnDestroy()
     {
-        _signalBus.Unsubscribe<OnPlayerDeath>(OnPlayerDeath);
+        _signalBus.Unsubscribe<OnGameStateChanged>(OnGameStateChanged);
     }
 
-    private void OnPlayerDeath()
+    private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
     {
-        _shadowMeshGameObject.SetActive(false);
+        _shadowMeshGameObject.SetActive(stateChangedEvent.currentStateType != GameStateType.Defeat);
     }
 }

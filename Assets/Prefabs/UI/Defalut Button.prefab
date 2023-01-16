@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 8220383347550737524}
   - component: {fileID: 8220383347550737525}
   - component: {fileID: 8220383347550737526}
+  - component: {fileID: 5857683433258467518}
   m_Layer: 5
   m_Name: Defalut Button
   m_TagString: Untagged
@@ -270,3 +271,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 8220383347550737525}
   _targetStateType: 0
+--- !u!114 &5857683433258467518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8220383347550737513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad3144cc0df42a3a71f4c9fc29f5497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxType: 1
+  _button: {fileID: 8220383347550737525}

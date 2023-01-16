@@ -45,9 +45,9 @@ namespace Player
 
         public void ResetValues()
         {
-            _rigidbody.MovePosition(_initialPosition);
+            transform.position = _initialPosition;
+            //_rigidbody.MovePosition(_initialPosition);
             SetDirection(_playerSettings.InitialMoveDirection);
-            SetUseGravityState(false);
         }
 
         public void ChangeMoveAvailabilityState(bool newState)
@@ -60,9 +60,9 @@ namespace Player
                 return;
             }
             
-            SetUseGravityState(true);
             _rigidbody.velocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
         }
+        
 
         public void ChangeDirection()
         {
@@ -80,14 +80,23 @@ namespace Player
                 Direction.Left => Vector3.left,
                 _ => Vector3.zero
             };
+            
+            if(!_isAbleToMove)
+                return;
+            
             _currentVectorDirection *= _playerSettings.DefaultMovementSpeed;
             
             _rigidbody.velocity = new Vector3(_currentVectorDirection.x, _rigidbody.velocity.y, 0);
         }
 
-        private void SetUseGravityState(bool state)
+        public void SetGravityEnabledState(bool state)
         {
             _rigidbody.useGravity = state;
+            var rigidbodyConstraints = _rigidbody.constraints;
+            _rigidbody.constraints = state 
+                ? rigidbodyConstraints ^ RigidbodyConstraints.FreezePositionY
+                : rigidbodyConstraints | RigidbodyConstraints.FreezePositionY;
+            
         }
     }
 }

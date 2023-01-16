@@ -79,6 +79,7 @@ namespace Player
                     ChangeInputEnabledStates(false);
                     _playerMovement.ResetValues();
                     _playerMovement.ChangeMoveAvailabilityState(false);
+                    _playerMovement.SetGravityEnabledState(false);
                     ResetInputValues();
                     break;
                 case GameStateType.Play:
@@ -91,6 +92,7 @@ namespace Player
                     break;
                 case GameStateType.Defeat:
                     ChangeInputEnabledStates(false);
+                    _playerMovement.SetGravityEnabledState(true);
                     break;
             }
         }

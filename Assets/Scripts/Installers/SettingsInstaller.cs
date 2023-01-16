@@ -12,12 +12,14 @@ namespace Installers
         [SerializeField, Required] private VfxSettings _vfxSettings;
         [SerializeField, Required] private PlayerSkinsContainer _playerSkinsContainer;
         [SerializeField, Required] private UISettings _uiSettings;
+        [SerializeField, Required] private AudioSetupSettings _audioSetupSettings;
         
         public override void InstallBindings()
         {
             Container.Bind<PlayerSettings>().FromScriptableObject(_playerSettings).AsSingle();
             Container.Bind<PlatformsSettings>().FromScriptableObject(_platformsSettings).AsSingle();
             Container.Bind<VfxSettings>().FromScriptableObject(_vfxSettings).AsSingle();
+            Container.Bind<AudioSetupSettings>().FromScriptableObject(_audioSetupSettings).AsSingle();
             
             Container.Bind<PlayerSkinsContainer>().FromScriptableObject(_playerSkinsContainer).AsSingle();
             Container.Bind<UISettings>().FromScriptableObject(_uiSettings).AsSingle();
