@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 namespace UI.SFX
 {
-    public class ButtonSfxPlayer : AbstractUiSfxPlayer
+    public class ButtonWithSfx : AbstractUiButtonWithSfx
     {
+        protected override event Action PlaySfxEvent;
+        
         [SerializeField] private Button _button;
 
         private void OnValidate()
@@ -29,9 +31,7 @@ namespace UI.SFX
         private void OnButtonClick()
         {
             PlaySfxEvent?.Invoke();
-        }       
-        
-        
-        protected override event Action PlaySfxEvent;
+        }
+
     }
 }

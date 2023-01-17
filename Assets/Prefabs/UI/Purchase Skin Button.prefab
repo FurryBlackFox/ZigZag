@@ -67,6 +67,8 @@ GameObject:
   - component: {fileID: 648396972814755507}
   - component: {fileID: 648396972814755501}
   - component: {fileID: 2330318255150301269}
+  - component: {fileID: 2611833156265769787}
+  - component: {fileID: 8797705018807750065}
   m_Layer: 5
   m_Name: Purchase Skin Button
   m_TagString: Untagged
@@ -191,6 +193,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _purchasedState: {fileID: 648396973513091453}
   _notPurchasedState: {fileID: 648396972775814416}
+--- !u!114 &2611833156265769787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648396972814755505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad3144cc0df42a3a71f4c9fc29f5497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxType: 1
+  _button: {fileID: 648396972814755501}
+--- !u!114 &8797705018807750065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648396972814755505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 1
 --- !u!1 &648396973513091395
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Lean.Pool;
 using Sirenix.OdinInspector;
 using UnityEngine;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Lean.Pool;
+﻿using Lean.Pool;
 using Settings;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -38,14 +36,13 @@ namespace Platforms
             if (_activeJewel)
                 return;
 
-            _activeJewel = LeanPool.Spawn(_platformsSettings.GetRandomJewelPrefab());
+            var jewelSpawnPointTransform = _jewelSpawnPoint.transform;
+            _activeJewel = LeanPool.Spawn(_platformsSettings.GetRandomJewelPrefab(),
+                jewelSpawnPointTransform.position, jewelSpawnPointTransform.rotation, jewelSpawnPointTransform);
             _activeJewel.Init(_signalBus);
             _activeJewel.OnJewelDespawned += OnActiveJewelDespawned;
-            
-            var jewelSpawnPointTransform = _jewelSpawnPoint.transform;
-            
-            _activeJewel.OnSpawn(jewelSpawnPointTransform,
-                jewelSpawnPointTransform.position, jewelSpawnPointTransform.rotation);
+
+            _activeJewel.OnSpawn();
         }
 
         public void TryToDespawnJewel()

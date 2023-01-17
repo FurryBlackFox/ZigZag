@@ -1,8 +1,6 @@
 ﻿using System;
-using Signals;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Zenject;
 
 namespace Player
 {

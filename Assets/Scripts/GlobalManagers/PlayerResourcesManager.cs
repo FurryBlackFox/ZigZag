@@ -53,7 +53,6 @@ public class PlayerResourcesManager
 
     private void OnGameStateChanged(OnGameStateChanged stateChangedEvent)
     {
-        var prevStateType = stateChangedEvent.prevStateType;
         switch (stateChangedEvent.currentStateType)
         {
             case GameStateType.Defeat:

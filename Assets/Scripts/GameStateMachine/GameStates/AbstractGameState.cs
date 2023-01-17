@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using Cysharp.Threading.Tasks;
 using Zenject;
 
 namespace GameStateMachine.GameStates

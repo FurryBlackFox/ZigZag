@@ -1,6 +1,5 @@
 using GameStateMachine.GameStates;
 using PlatformsManager;
-using UI;
 using UnityEngine;
 
 namespace Signals

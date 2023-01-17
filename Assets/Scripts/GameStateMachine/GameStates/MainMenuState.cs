@@ -1,8 +1,5 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Signals;
-using UI;
-using UnityEngine;
 using Zenject;
 
 namespace GameStateMachine.GameStates
@@ -13,12 +10,12 @@ namespace GameStateMachine.GameStates
         {
         }
 
-        public async override UniTask Enter()
+        public override async UniTask Enter()
         {
             signalBus.Subscribe<OnGameStateChangeButtonClick>(OnGameStateChangeButtonClick);
         }
 
-        public async override UniTask Exit()
+        public override async UniTask Exit()
         {
             signalBus.Unsubscribe<OnGameStateChangeButtonClick>(OnGameStateChangeButtonClick);
         }

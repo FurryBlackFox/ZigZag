@@ -1,10 +1,8 @@
-using System;
 using GameStateMachine.GameStates;
 using Installers.GlobalManagers;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Player
@@ -97,10 +95,10 @@ namespace Player
             }
         }
 
-        private void ChangeInputEnabledStates(bool enabled)
+        private void ChangeInputEnabledStates(bool state)
         {
-            _aiInput.ChangeInputEnabledState(enabled);
-            _playerInput.ChangeInputEnabledState(enabled);
+            _aiInput.ChangeInputEnabledState(state);
+            _playerInput.ChangeInputEnabledState(state);
         }
 
         private void ResetInputValues()

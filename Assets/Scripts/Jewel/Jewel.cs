@@ -1,7 +1,5 @@
 ﻿using System;
 using Lean.Pool;
-using Signals;
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -17,11 +15,8 @@ namespace Jewel
             _signalBus = signalBus;
         }
 
-        public void OnSpawn(Transform parent, Vector3 spawnPoint, Quaternion rotation)
+        public void OnSpawn()
         {
-            transform.parent = parent;
-            transform.position = spawnPoint;
-            transform.rotation = rotation;
         }
 
         public void TryToDespawn()

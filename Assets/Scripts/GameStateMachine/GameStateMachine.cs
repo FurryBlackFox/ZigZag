@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GameStateMachine.GameStates;
 using Signals;
 using UnityEngine;
@@ -29,7 +28,6 @@ namespace GameStateMachine
         {
             _gameStatesDictionary = new Dictionary<GameStateType, AbstractGameState>
             {
-                //{ typeof(BoostrapState), new BoostrapState(this) },
                 { GameStateType.MainMenu, new MainMenuState(this, _signalBus) },
                 { GameStateType.Settings, new SettingsState(this, _signalBus) },
                 { GameStateType.SkinShop, new SkinShopState(this, _signalBus) },

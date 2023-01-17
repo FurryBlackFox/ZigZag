@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 85046636}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Lights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584360579976869970, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
       propertyPath: m_Name
-      value: Music Toggle
+      value: Sounds Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 8584360579976869973, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
       propertyPath: m_Pivot.x
@@ -561,7 +561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8584360580488730561, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
       propertyPath: m_text
-      value: Music
+      value: Sounds
       objectReference: {fileID: 0}
     - target: {fileID: 8584360580488730561, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
       propertyPath: m_fontSize
@@ -3074,7 +3074,7 @@ GameObject:
   - component: {fileID: 1043737678}
   - component: {fileID: 1043737680}
   - component: {fileID: 1043737679}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Mesh
   m_TagString: Jewel
   m_Icon: {fileID: 0}
@@ -7592,6 +7592,14 @@ PrefabInstance:
     - target: {fileID: 8584360579976869973, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584360580488730561, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
+      propertyPath: m_text
+      value: AI Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584360580488730561, guid: 2e481b515dce67c4592a3a7837961671, type: 3}
+      propertyPath: m_fontSize
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e481b515dce67c4592a3a7837961671, type: 3}

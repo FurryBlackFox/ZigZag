@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Installers.GlobalManagers;
 using Lean.Pool;
 using Settings;
 using Sirenix.OdinInspector;
 using UI.SkinShopButtons;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace UI.SkinShop

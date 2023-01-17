@@ -1,6 +1,5 @@
 ﻿using DefaultNamespace;
 using Signals;
-using UnityEngine;
 using Utils.SavableData;
 using Zenject;
 

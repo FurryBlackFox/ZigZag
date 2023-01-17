@@ -1,4 +1,3 @@
-using System;
 using Cinemachine;
 using GameStateMachine.GameStates;
 using Signals;

@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 8584360579976869975}
   - component: {fileID: 8584360579976869972}
   - component: {fileID: 3817499572475169588}
+  - component: {fileID: 2193930723864397142}
   m_Layer: 5
   m_Name: Settings Toggle Button
   m_TagString: Untagged
@@ -208,6 +209,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toggle: {fileID: 8584360579976869975}
   _controlType: 0
+--- !u!114 &2193930723864397142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8584360579976869970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa2cdaee07b4ddda81e7657806d1d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxType: 1
+  _toggle: {fileID: 8584360579976869975}
 --- !u!1 &8584360580488730175
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +315,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.9
+  m_fontSize: 64
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

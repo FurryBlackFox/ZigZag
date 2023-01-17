@@ -1,5 +1,4 @@
-﻿using System;
-using Platforms;
+﻿using Platforms;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

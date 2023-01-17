@@ -10,13 +10,13 @@ namespace GameStateMachine.GameStates
         {
         }
 
-        public async override UniTask Enter()
+        public override async UniTask Enter()
         {
             signalBus.Subscribe<OnGameStateChangeButtonClick>(OnGameStateChangeButtonClick);
             signalBus.Subscribe<OnPlayerDeath>(OnPlayerDeath);
         }
 
-        public async override UniTask Exit()
+        public override async UniTask Exit()
         {
             signalBus.Unsubscribe<OnGameStateChangeButtonClick>(OnGameStateChangeButtonClick);
             signalBus.Unsubscribe<OnPlayerDeath>(OnPlayerDeath);
@@ -30,9 +30,8 @@ namespace GameStateMachine.GameStates
         private void OnGameStateChangeButtonClick(OnGameStateChangeButtonClick buttonClickEvent)
         {
             if (buttonClickEvent.buttonTargetType == GameStateType.Pause)
-            {
                 gameStateMachine.ChangeState(buttonClickEvent.buttonTargetType);
-            }
+            
         }
     }
 }

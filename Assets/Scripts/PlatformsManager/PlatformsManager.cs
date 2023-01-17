@@ -1,6 +1,4 @@
-﻿using System;
-using GameStateMachine.GameStates;
-using Settings;
+﻿using GameStateMachine.GameStates;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;

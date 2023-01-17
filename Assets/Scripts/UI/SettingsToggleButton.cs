@@ -1,6 +1,4 @@
-﻿using System;
-using Installers.GlobalManagers;
-using Signals;
+﻿using Installers.GlobalManagers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;

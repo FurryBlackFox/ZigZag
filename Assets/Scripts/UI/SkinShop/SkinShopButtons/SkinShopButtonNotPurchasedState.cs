@@ -1,6 +1,5 @@
 ﻿using Installers.GlobalManagers;
 using Settings;
-using Signals;
 using TMPro;
 using UnityEngine;
 using Zenject;

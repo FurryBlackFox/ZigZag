@@ -1,7 +1,6 @@
 ﻿using System;
 using Settings;
 using Signals;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 

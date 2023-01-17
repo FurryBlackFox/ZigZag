@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Installers.GlobalManagers;
 using Settings.Audio;
 using UnityEngine;
 using Zenject;
 
-public abstract class AbstractUiSfxPlayer : MonoBehaviour
+public abstract class AbstractUiButtonWithSfx : MonoBehaviour
 {
     [SerializeField] protected SfxType sfxType = SfxType.None;
     
@@ -18,6 +16,7 @@ public abstract class AbstractUiSfxPlayer : MonoBehaviour
     private void Init(AudioPlayer audioPlayer)
     {
         this.audioPlayer = audioPlayer;
+        
     }
     
     protected virtual void Awake()

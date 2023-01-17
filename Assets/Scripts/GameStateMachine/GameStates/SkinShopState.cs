@@ -23,9 +23,8 @@ namespace GameStateMachine.GameStates
         private void OnGameStateChangeButtonClick(OnGameStateChangeButtonClick buttonClickEvent)
         {
             if (buttonClickEvent.buttonTargetType == GameStateType.MainMenu)
-            {
                 gameStateMachine.ChangeState(buttonClickEvent.buttonTargetType);
-            }
+            
         }
     }
 }
